@@ -27,6 +27,7 @@ class RadarViewController: UIViewController  {
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
         mapView.delegate = self
+        
         let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005) // Adjust the zoom level
         let region = MKCoordinateRegion(center: lastKnownLocation.coordinate, span: span)
         
@@ -35,31 +36,6 @@ class RadarViewController: UIViewController  {
 }
 
 extension RadarViewController: MKMapViewDelegate {
-    
-    func addImpactArea(at coordinate: CLLocationCoordinate2D, radius: CLLocationDistance) {
-        let circle = MKCircle(center: coordinate, radius: radius)
-        circle.title = "impact"
-        mapView.addOverlay(circle)
-        overlays.append(circle)
-    }
-    
-    func addAirdropArea(at coordinate: CLLocationCoordinate2D, radius: CLLocationDistance) {
-        let circle = MKCircle(center: coordinate, radius: radius)
-        circle.title = "airdrop"
-        mapView.addOverlay(circle)
-        overlays.append(circle)
-    }
-    
-    
-    func removeOverlay(_ overlay: MKOverlay) {
-        mapView.removeOverlay(overlay)
-        overlays.removeAll { $0 === overlay }
-    }
-    
-    func removeAllOverlays() {
-        mapView.removeOverlays(mapView.overlays)
-        overlays.removeAll()
-    }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if let circleOverlay = overlay as? MKCircle {
@@ -81,9 +57,52 @@ extension RadarViewController: MKMapViewDelegate {
         }
         return MKOverlayRenderer(overlay: overlay)
     }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let airdropAnnotation = annotation as? AirdropAnnotation else { return nil }
+
+        let identifier = "AirdropAnnotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView?.canShowCallout = false
+
+            // Create a label for the countdown
+            let timerLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
+            timerLabel.backgroundColor = .init(white: 1.0, alpha: 0.8)
+            timerLabel.textColor = .black
+            timerLabel.font = UIFont.boldSystemFont(ofSize: 13.0)
+            timerLabel.tag = 101
+            
+            annotationView?.addSubview(timerLabel)
+            
+            // Create a label for the value
+            let valueLabel = UILabel(frame: CGRect(x: 0, y: 20, width: 100, height: 20))
+            valueLabel.backgroundColor = .init(white: 1.0, alpha: 0.8)
+            valueLabel.textColor = .black
+            valueLabel.font = UIFont.boldSystemFont(ofSize: 13.0)
+            valueLabel.tag = 102
+            
+            annotationView?.addSubview(valueLabel)
+        } else {
+            annotationView?.annotation = annotation
+        }
+
+        // Update countdown label
+        if let timerLabel = annotationView?.viewWithTag(101) as? UILabel {
+            timerLabel.text = "\(airdropAnnotation.countdown)s"
+        }
+
+        // Update value label
+        if let valueLabel = annotationView?.viewWithTag(102) as? UILabel {
+            valueLabel.text = "\(airdropAnnotation.value) ETH"
+        }
+        
+        return annotationView
+    }
+
 }
-
-
 extension RadarViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -96,7 +115,78 @@ extension RadarViewController: CLLocationManagerDelegate {
         if let location = locations.last, location.distance(from: lastKnownLocation) > 100 {
             print("Current location: \(location)")
             lastKnownLocation = location
-            addAirdropArea(at: testCoordinate, radius: 200)            
+            addAirdropArea(at: testCoordinate, radius: 200)
         }
+    }
+}
+
+extension RadarViewController {
+    
+    func addImpactArea(at coordinate: CLLocationCoordinate2D, radius: CLLocationDistance) {
+        let circle = MKCircle(center: coordinate, radius: radius)
+        circle.title = "impact"
+        mapView.addOverlay(circle)
+        overlays.append(circle)
+    }
+    
+    func addAirdropArea(at coordinate: CLLocationCoordinate2D, radius: CLLocationDistance) {
+        let circle = MKCircle(center: coordinate, radius: radius)
+        circle.title = "airdrop"
+        mapView.addOverlay(circle)
+        overlays.append(circle)
+        addAirdropWithTimer(at: coordinate, value: "0.5", duration: 20)
+    }
+    
+    func addAirdropWithTimer(at coordinate: CLLocationCoordinate2D, value: String, duration: Int) {
+        let airdropAnnotation = AirdropAnnotation(coordinate: coordinate, countdown: duration, value: value)
+        mapView.addAnnotation(airdropAnnotation)
+        startTimer(for: airdropAnnotation)
+    }
+    
+    func removeOverlay(_ overlay: MKOverlay) {
+        mapView.removeOverlay(overlay)
+        overlays.removeAll { $0 === overlay }
+    }
+    
+    func removeAllOverlays() {
+        mapView.removeOverlays(mapView.overlays)
+        overlays.removeAll()
+    }
+    
+    func startTimer(for annotation: AirdropAnnotation) {
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+
+            guard let annotationView = self?.mapView.view(for: annotation),
+                  let timerLabel = annotationView.viewWithTag(101) as? UILabel else {
+                return
+            }
+
+            DispatchQueue.main.async {
+                if annotation.countdown > 0 {
+                    annotation.countdown -= 1
+                    
+                    timerLabel.text = "\(annotation.countdown)s"
+                    
+                } else {
+                    timer.invalidate()
+                    print("Handle drop")
+                    timerLabel.text = "Airdrop Landed"
+//                    self?.mapView.removeAnnotation(annotation) //do not erase unless claimed.
+                }
+            }
+        }
+    }
+}
+
+class AirdropAnnotation: NSObject, MKAnnotation {
+    dynamic var coordinate: CLLocationCoordinate2D
+    var countdown: Int
+    var value: String
+
+    init(coordinate: CLLocationCoordinate2D, countdown: Int, value: String) {
+        self.coordinate = coordinate
+        self.countdown = countdown
+        self.value = value
+        super.init()
     }
 }

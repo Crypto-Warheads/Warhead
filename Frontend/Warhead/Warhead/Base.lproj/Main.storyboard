@@ -31,14 +31,14 @@
                             <constraint firstItem="NzB-Il-3Au" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="x1v-GN-kvd"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Radar" id="64h-z8-C8B"/>
+                    <tabBarItem key="tabBarItem" title="Radar" image="map.circle" catalog="system" selectedImage="map.circle" id="64h-z8-C8B"/>
                     <connections>
                         <outlet property="mapView" destination="NzB-Il-3Au" id="4uE-Zg-Hya"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="967" y="-663"/>
+            <point key="canvasLocation" x="965.64885496183206" y="-663.38028169014092"/>
         </scene>
         <!--Warheads-->
         <scene sceneID="gd7-KL-RVH">
@@ -50,7 +50,7 @@
                         <viewLayoutGuide key="safeArea" id="FOJ-u1-whY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Warheads" id="ywc-o6-glP"/>
+                    <tabBarItem key="tabBarItem" title="Warheads" image="paperplane.circle" catalog="system" selectedImage="paperplane.circle" id="ywc-o6-glP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZCK-ma-SVF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -66,6 +66,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <tabBarAppearance key="standardAppearance">
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tabBarAppearance>
@@ -80,7 +81,10 @@
             <point key="canvasLocation" x="72.51908396946564" y="3.5211267605633805"/>
         </scene>
     </scenes>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
+        <image name="map.circle" catalog="system" width="128" height="123"/>
+        <image name="paperplane.circle" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
