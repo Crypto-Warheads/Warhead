@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--RADAR-->
+        <!--Radar-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="RadarViewController" customModule="Warhead" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,11 +31,30 @@
                             <constraint firstItem="NzB-Il-3Au" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="x1v-GN-kvd"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="RADAR" id="64h-z8-C8B"/>
+                    <tabBarItem key="tabBarItem" title="Radar" id="64h-z8-C8B"/>
+                    <connections>
+                        <outlet property="mapView" destination="NzB-Il-3Au" id="4uE-Zg-Hya"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="999.23664122137404" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="967" y="-663"/>
+        </scene>
+        <!--Warheads-->
+        <scene sceneID="gd7-KL-RVH">
+            <objects>
+                <viewController id="Vu0-i7-0c6" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kzv-5D-leX">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="769"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="FOJ-u1-whY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Warheads" id="ywc-o6-glP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZCK-ma-SVF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="990" y="27"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="D0M-Nk-y1e">
@@ -53,6 +72,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="G5P-9u-X20"/>
+                        <segue destination="Vu0-i7-0c6" kind="relationship" relationship="viewControllers" id="arD-kF-39v"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pP0-VI-hSV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
