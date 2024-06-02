@@ -325,21 +325,44 @@
                                 <color key="textColor" red="0.38823530080000002" green="0.31764706970000001" blue="0.62352943419999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGw-xG-pqE">
+                                <rect key="frame" x="150.66666666666666" y="695" width="91.666666666666657" height="38"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Launch">
+                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="payloadLaunched:" destination="lC9-hl-GVU" eventType="touchUpInside" id="dvJ-6U-ayV"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FUX-EX-Dws">
+                                <rect key="frame" x="48" y="241" width="297" height="34"/>
+                                <color key="backgroundColor" red="0.6549019814" green="0.96078431610000004" blue="0.87843137979999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7cK-it-KnB"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="7cK-it-KnB" firstAttribute="bottom" secondItem="jGw-xG-pqE" secondAttribute="bottom" constant="36" id="0zn-sh-22S"/>
                             <constraint firstItem="jh4-AQ-ipD" firstAttribute="centerX" secondItem="7cK-it-KnB" secondAttribute="centerX" id="HDD-8K-ENt"/>
+                            <constraint firstItem="FUX-EX-Dws" firstAttribute="leading" secondItem="7cK-it-KnB" secondAttribute="leading" constant="48" id="Vfd-aS-y6m"/>
+                            <constraint firstItem="jGw-xG-pqE" firstAttribute="centerX" secondItem="7cK-it-KnB" secondAttribute="centerX" id="WOe-zW-NhQ"/>
                             <constraint firstItem="VQE-Pl-1o8" firstAttribute="top" secondItem="jh4-AQ-ipD" secondAttribute="bottom" constant="30" id="aOk-Ip-zVA"/>
+                            <constraint firstItem="FUX-EX-Dws" firstAttribute="top" secondItem="VQE-Pl-1o8" secondAttribute="bottom" constant="36" id="ekI-gQ-Dhg"/>
                             <constraint firstItem="VQE-Pl-1o8" firstAttribute="centerX" secondItem="7cK-it-KnB" secondAttribute="centerX" id="jzC-Db-fnw"/>
                             <constraint firstItem="jh4-AQ-ipD" firstAttribute="top" secondItem="7cK-it-KnB" secondAttribute="top" constant="21" id="qUZ-iA-QyM"/>
                             <constraint firstItem="VQE-Pl-1o8" firstAttribute="leading" secondItem="7cK-it-KnB" secondAttribute="leading" constant="48" id="rwZ-ci-7Zg"/>
+                            <constraint firstItem="FUX-EX-Dws" firstAttribute="centerX" secondItem="7cK-it-KnB" secondAttribute="centerX" id="tYn-vp-N9e"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dKI-NR-4Wy"/>
                     <connections>
                         <outlet property="payloadLabel" destination="jh4-AQ-ipD" id="Qhg-xZ-4kz"/>
                         <outlet property="slider" destination="VQE-Pl-1o8" id="PDi-re-BlO"/>
+                        <outlet property="textfield" destination="FUX-EX-Dws" id="HZa-r7-Fck"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aNm-0n-7ct" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

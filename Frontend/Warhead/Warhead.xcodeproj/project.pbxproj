@@ -12,6 +12,7 @@
 		5C745B152C0C2E72000339AC /* WarheadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C745B142C0C2E72000339AC /* WarheadViewController.swift */; };
 		5C745B172C0C3EA7000339AC /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C745B162C0C3EA7000339AC /* LocationPickerViewController.swift */; };
 		5C745B192C0C4337000339AC /* PayloadPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C745B182C0C4337000339AC /* PayloadPickerViewController.swift */; };
+		5C745B1B2C0C6230000339AC /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C745B1A2C0C6230000339AC /* LocationManager.swift */; };
 		5C822D602C0B2F6800B691CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C822D5F2C0B2F6800B691CA /* AppDelegate.swift */; };
 		5C822D622C0B2F6800B691CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C822D612C0B2F6800B691CA /* SceneDelegate.swift */; };
 		5C822D642C0B2F6800B691CA /* RadarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C822D632C0B2F6800B691CA /* RadarViewController.swift */; };
@@ -26,6 +27,7 @@
 		5C745B142C0C2E72000339AC /* WarheadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarheadViewController.swift; sourceTree = "<group>"; };
 		5C745B162C0C3EA7000339AC /* LocationPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerViewController.swift; sourceTree = "<group>"; };
 		5C745B182C0C4337000339AC /* PayloadPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadPickerViewController.swift; sourceTree = "<group>"; };
+		5C745B1A2C0C6230000339AC /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		5C822D5C2C0B2F6800B691CA /* Warhead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Warhead.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C822D5F2C0B2F6800B691CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C822D612C0B2F6800B691CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		5C822D732C0B31DC00B691CA /* Backend */ = {
 			isa = PBXGroup;
 			children = (
+				5C745B1A2C0C6230000339AC /* LocationManager.swift */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 				5C822D642C0B2F6800B691CA /* RadarViewController.swift in Sources */,
 				5C745B152C0C2E72000339AC /* WarheadViewController.swift in Sources */,
 				5C822D602C0B2F6800B691CA /* AppDelegate.swift in Sources */,
+				5C745B1B2C0C6230000339AC /* LocationManager.swift in Sources */,
 				5C745B192C0C4337000339AC /* PayloadPickerViewController.swift in Sources */,
 				5C745B172C0C3EA7000339AC /* LocationPickerViewController.swift in Sources */,
 				5C822D622C0B2F6800B691CA /* SceneDelegate.swift in Sources */,

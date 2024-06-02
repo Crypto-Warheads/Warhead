@@ -15,7 +15,7 @@ class RadarViewController: UIViewController  {
     @IBOutlet weak var mapView: MKMapView!
     var lastKnownLocation = CLLocation()
     var overlays = [MKOverlay]()
-    let testCoordinate = CLLocationCoordinate2D(latitude: 50.09389700161148, longitude: 14.450689047959024)
+    var dropValue = "0.5"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +32,8 @@ class RadarViewController: UIViewController  {
         let region = MKCoordinateRegion(center: lastKnownLocation.coordinate, span: span)
         
         mapView.setRegion(region, animated: true)
+        NotificationCenter.default.addObserver(self, selector: #selector(launchAirdrop), name: NSNotification.Name("TriggerAirdrop"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(launchHellfire), name: NSNotification.Name("TriggerHellfire"), object: nil)
     }
 }
 
@@ -98,7 +100,6 @@ extension RadarViewController: MKMapViewDelegate {
         if let valueLabel = annotationView?.viewWithTag(102) as? UILabel {
             valueLabel.text = "\(airdropAnnotation.value) ETH"
         }
-        
         return annotationView
     }
 
@@ -115,9 +116,20 @@ extension RadarViewController: CLLocationManagerDelegate {
         if let location = locations.last, location.distance(from: lastKnownLocation) > 100 {
             print("Current location: \(location)")
             lastKnownLocation = location
-            addAirdropArea(at: testCoordinate, radius: 200)
         }
     }
+    
+    @objc func launchAirdrop() {
+        removeAllOverlays()
+        addAirdropArea(at: LocationManager.sharedManager.dropCoordinate, radius: 300)
+    }
+    
+    @objc func launchHellfire() {
+        removeAllOverlays()
+        addImpactArea(at: LocationManager.sharedManager.dropCoordinate, radius: 100)
+    }
+    
+    
 }
 
 extension RadarViewController {
@@ -134,7 +146,7 @@ extension RadarViewController {
         circle.title = "airdrop"
         mapView.addOverlay(circle)
         overlays.append(circle)
-        addAirdropWithTimer(at: coordinate, value: "0.5", duration: 20)
+        addAirdropWithTimer(at: coordinate, value: dropValue, duration: 20)
     }
     
     func addAirdropWithTimer(at coordinate: CLLocationCoordinate2D, value: String, duration: Int) {
@@ -150,6 +162,7 @@ extension RadarViewController {
     
     func removeAllOverlays() {
         mapView.removeOverlays(mapView.overlays)
+        mapView.removeAnnotations(mapView.annotations)
         overlays.removeAll()
     }
     
@@ -170,7 +183,7 @@ extension RadarViewController {
                 } else {
                     timer.invalidate()
                     print("Handle drop")
-                    timerLabel.text = "Airdrop Landed"
+                    timerLabel.text = "❌ No claim"
 //                    self?.mapView.removeAnnotation(annotation) //do not erase unless claimed.
                 }
             }

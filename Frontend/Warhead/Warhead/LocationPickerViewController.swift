@@ -27,6 +27,9 @@ class LocationPickerViewController: UIViewController {
     func addInitialLocationPin() {
         let annotation = MKPointAnnotation()
         annotation.coordinate = selectedLocation
+        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005) // Adjust the zoom level
+        let region = MKCoordinateRegion(center: annotation.coordinate, span: span)
+        mapView.setRegion(region, animated: true)
         mapView.addAnnotation(annotation)
     }
 }
@@ -56,7 +59,7 @@ extension LocationPickerViewController: MKMapViewDelegate {
             view.dragState = .none
             if let coordinate = view.annotation?.coordinate {
                 print("New coordinates: \(coordinate.latitude), \(coordinate.longitude)")
-                selectedLocation = coordinate
+                LocationManager.sharedManager.dropCoordinate = coordinate
             }
         default: break
         }
