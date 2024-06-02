@@ -10,6 +10,8 @@
 		5C444E882C0B4CA800D9A836 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C444E872C0B4CA800D9A836 /* CoreLocation.framework */; };
 		5C444E8A2C0B4CAE00D9A836 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C444E892C0B4CAE00D9A836 /* MapKit.framework */; };
 		5C745B152C0C2E72000339AC /* WarheadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C745B142C0C2E72000339AC /* WarheadViewController.swift */; };
+		5C745B172C0C3EA7000339AC /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C745B162C0C3EA7000339AC /* LocationPickerViewController.swift */; };
+		5C745B192C0C4337000339AC /* PayloadPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C745B182C0C4337000339AC /* PayloadPickerViewController.swift */; };
 		5C822D602C0B2F6800B691CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C822D5F2C0B2F6800B691CA /* AppDelegate.swift */; };
 		5C822D622C0B2F6800B691CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C822D612C0B2F6800B691CA /* SceneDelegate.swift */; };
 		5C822D642C0B2F6800B691CA /* RadarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C822D632C0B2F6800B691CA /* RadarViewController.swift */; };
@@ -22,6 +24,8 @@
 		5C444E872C0B4CA800D9A836 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5C444E892C0B4CAE00D9A836 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5C745B142C0C2E72000339AC /* WarheadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarheadViewController.swift; sourceTree = "<group>"; };
+		5C745B162C0C3EA7000339AC /* LocationPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerViewController.swift; sourceTree = "<group>"; };
+		5C745B182C0C4337000339AC /* PayloadPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadPickerViewController.swift; sourceTree = "<group>"; };
 		5C822D5C2C0B2F6800B691CA /* Warhead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Warhead.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C822D5F2C0B2F6800B691CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C822D612C0B2F6800B691CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,7 +82,9 @@
 				5C822D5F2C0B2F6800B691CA /* AppDelegate.swift */,
 				5C822D612C0B2F6800B691CA /* SceneDelegate.swift */,
 				5C822D632C0B2F6800B691CA /* RadarViewController.swift */,
+				5C745B162C0C3EA7000339AC /* LocationPickerViewController.swift */,
 				5C745B142C0C2E72000339AC /* WarheadViewController.swift */,
+				5C745B182C0C4337000339AC /* PayloadPickerViewController.swift */,
 				5C822D652C0B2F6800B691CA /* Main.storyboard */,
 				5C822D682C0B2F6900B691CA /* Assets.xcassets */,
 				5C822D6A2C0B2F6900B691CA /* LaunchScreen.storyboard */,
@@ -168,6 +174,8 @@
 				5C822D642C0B2F6800B691CA /* RadarViewController.swift in Sources */,
 				5C745B152C0C2E72000339AC /* WarheadViewController.swift in Sources */,
 				5C822D602C0B2F6800B691CA /* AppDelegate.swift in Sources */,
+				5C745B192C0C4337000339AC /* PayloadPickerViewController.swift in Sources */,
+				5C745B172C0C3EA7000339AC /* LocationPickerViewController.swift in Sources */,
 				5C822D622C0B2F6800B691CA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
